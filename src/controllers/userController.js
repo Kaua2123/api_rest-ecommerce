@@ -62,6 +62,25 @@ class UserController {
       });
     }
   }
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) {
+        return res.status(400).json('Missing ID');
+      }
+
+      const user = await User.findByPk(id);
+      await user.destroy();
+
+      return res.status(200).json(null);
+    } catch (err) {
+      return res.status(400).json({
+        errors: err.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new UserController();

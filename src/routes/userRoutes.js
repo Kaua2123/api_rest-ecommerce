@@ -8,5 +8,6 @@ router.get('/user', userController.index); // exibição de usuários
 router.get('/user/:id', userController.show);
 router.post('/user/store', userController.store); // criação de usuários
 router.put('/user/update/:id', userController.update);
+router.delete('/user/delete/:id', userController.delete);
 
 export default router;
