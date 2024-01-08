@@ -1,6 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
+import bcrypt from 'bcrypt';
 
-export default class Users extends Model {
+export default class User extends Model {
   static init(sequelize) {
     super.init({
       username: {
@@ -8,6 +9,12 @@ export default class Users extends Model {
         defaultValue: '',
         unique: {
           msg: 'This username already exists.',
+        },
+        validate: {
+          len: {
+            args: [3, 24],
+            msg: 'Username must have between 3 or 24 characters',
+          },
         },
       },
       email: {
@@ -22,12 +29,27 @@ export default class Users extends Model {
           },
         },
       },
-      password: {
+      password_hash: {
         type: Sequelize.STRING,
         defaultValue: '',
+      },
+      password: {
+        type: Sequelize.VIRTUAL,
+        defaultValue: '',
+        validate: {
+          len: {
+            args: [3, 24],
+            msg: 'Password must have between 3 or 24 characters',
+          },
+        },
       },
     }, {
       sequelize,
     });
+    this.addHook('beforeSave', async (user) => {
+      user.password_hash = await bcrypt.hash(user.password, 8);
+    });
+
+    return this;
   }
 }
