@@ -2,7 +2,11 @@ import User from '../models/User';
 
 class UserController {
   async index(req, res) {
-    res.send('Hello World');
+    const user = await User.findAll({
+      attributes: ['id', 'username', 'email', ['password_hash', 'password']],
+    });
+
+    return res.status(200).json(user);
   }
 
   async store(req, res) {
