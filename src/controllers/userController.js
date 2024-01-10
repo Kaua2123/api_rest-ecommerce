@@ -19,9 +19,7 @@ class UserController {
     try {
       const { id } = req.params;
 
-      if (!id) {
-        return res.status(400).json('Missing ID');
-      }
+      if (!id) return res.status(400).json('Missing ID');
 
       const user = await User.findByPk(id);
 
@@ -48,9 +46,7 @@ class UserController {
     try {
       const { id } = req.params;
 
-      if (!id) {
-        return res.status(400).json('Missing ID');
-      }
+      if (!id) return res.status(400).json('Missing ID');
 
       const user = await User.findByPk(id);
       await user.update(req.body);
@@ -67,9 +63,7 @@ class UserController {
     try {
       const { id } = req.params;
 
-      if (!id) {
-        return res.status(400).json('Missing ID');
-      }
+      if (!id) return res.status(400).json('Missing ID');
 
       const user = await User.findByPk(id);
       await user.destroy();

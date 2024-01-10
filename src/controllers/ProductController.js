@@ -25,6 +25,28 @@ class ProductController {
       });
     }
   }
+
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) return res.status(400).json('Missing ID');
+
+      const product = await Product.findByPk(id);
+      await product.update(req.body);
+      const {
+        name, description, price, stock_quantity,
+      } = product;
+
+      return res.status(200).json({
+        name, description, price, stock_quantity,
+      });
+    } catch (err) {
+      return res.status(400).json({
+        errors: err.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new ProductController();
