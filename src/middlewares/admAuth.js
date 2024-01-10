@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-require('dotenv').config();
-
-export default function loginRequired(req, res, next) {
+export default async function admAuth(req, res, next) {
   const { authorization } = req.headers; // obtendo o Bearer e o token do cabeçalho
   if (!authorization) {
     return res.status(401).json('Unauthorized. You must be logged in');
@@ -15,8 +13,12 @@ export default function loginRequired(req, res, next) {
     if (err) {
       return res.status(500).json({ auth: false, message: 'Invalid token.' });
     }
-    const { id } = decoded;
-    return { id };
+    const { id, level } = decoded;
+    console.log('aqui está seu lvl', level);
+    if (level !== 1) {
+      return res.status(401).json('You must be an ADM.');
+    }
+    return { id, level };
   });
 
   return next();

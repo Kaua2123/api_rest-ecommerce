@@ -43,6 +43,10 @@ export default class User extends Model {
           },
         },
       },
+      level: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
     }, {
       sequelize,
     });
