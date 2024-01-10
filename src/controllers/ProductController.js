@@ -15,6 +15,20 @@ class ProductController {
     }
   }
 
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+
+      const product = await Product.findByPk(id);
+
+      return res.status(200).json(product);
+    } catch (err) {
+      return res.status(400).json({
+        errors: err.errors.map((error) => error.message),
+      });
+    }
+  }
+
   async store(req, res) {
     try {
       const product = await Product.create(req.body);
