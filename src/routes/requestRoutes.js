@@ -9,5 +9,6 @@ router.get('/request', loginRequired, RequestController.index);
 router.get('/request/:id', loginRequired, RequestController.show);
 router.post('/request/store', loginRequired, RequestController.store);
 router.put('/request/update/:id', loginRequired, RequestController.update);
+router.delete('/request/delete/:id', loginRequired, RequestController.delete);
 
 export default router;
