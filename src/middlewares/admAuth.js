@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 
+require('dotenv').config();
+
 export default async function admAuth(req, res, next) {
   const { authorization } = req.headers; // obtendo o Bearer e o token do cabeçalho
   if (!authorization) {

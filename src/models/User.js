@@ -56,4 +56,8 @@ export default class User extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Request, { foreignKey: 'user_id' });
+  }
 }
