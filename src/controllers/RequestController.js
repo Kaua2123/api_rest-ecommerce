@@ -38,6 +38,23 @@ class RequestController {
       });
     }
   }
+
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (!id) return res.status(400).json('Missing ID');
+
+      const request = await Request.findByPk(id);
+      const newRequest = await request.update(req.body);
+
+      return res.status(200).json(newRequest);
+    } catch (err) {
+      return res.status(400).json({
+        errors: err.errors.map((error) => error.message),
+      });
+    }
+  }
 }
 
 export default new RequestController();
