@@ -10,6 +10,7 @@ export default class Request extends Model {
       status: {
         type: Sequelize.ENUM,
         values: ['Processing', 'Sent', 'Delivered'],
+        defaultValue: 'Processing',
       },
       payment_method: {
         type: Sequelize.ENUM,

@@ -15,7 +15,7 @@ module.exports = {
           key: 'id',
         },
         onDelete: 'SET NULL',
-        onUpdate: 'CASCADEa',
+        onUpdate: 'CASCADE',
       },
       total_price: {
         type: Sequelize.FLOAT,
