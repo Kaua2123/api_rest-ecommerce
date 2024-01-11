@@ -5,6 +5,8 @@ import RequestController from '../controllers/RequestController';
 
 const router = express.Router();
 
+router.get('/request', loginRequired, RequestController.index);
+router.get('/request/:id', loginRequired, RequestController.show);
 router.post('/request/store', loginRequired, RequestController.store);
 
 export default router;
