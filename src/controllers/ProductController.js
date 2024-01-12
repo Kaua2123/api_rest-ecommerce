@@ -4,7 +4,7 @@ class ProductController {
   async index(req, res) {
     try {
       const products = await Product.findAll({
-        attributes: ['name', 'description', 'price', 'stock_quantity'],
+        attributes: ['id', 'name', 'description', 'price', 'stock_quantity'],
       });
 
       return res.status(200).json(products);

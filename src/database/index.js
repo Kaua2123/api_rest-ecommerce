@@ -3,10 +3,10 @@ import databaseConfig from '../config/database';
 import User from '../models/User';
 import Product from '../models/Product';
 import Request from '../models/Request';
-import Images from '../models/Images';
+import Image from '../models/Image';
 
 // models
-const models = [User, Product, Request, Images]; // array de models
+const models = [User, Product, Request, Image]; // array de models
 
 const connection = new Sequelize(databaseConfig); // conexão do Sequelize com o banco
 

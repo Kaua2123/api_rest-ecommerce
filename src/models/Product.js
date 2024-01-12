@@ -47,4 +47,8 @@ export default class Product extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasOne(models.Images, { foreignKey: 'product_id' });
+  }
 }
