@@ -1,10 +1,16 @@
 import Product from '../models/Product';
+import Image from '../models/Image';
 
 class ProductController {
   async index(req, res) {
     try {
       const products = await Product.findAll({
         attributes: ['id', 'name', 'description', 'price', 'stock_quantity'],
+        order: [['id', 'DESC'], [Image, 'id', 'DESC']],
+        include: {
+          model: Image,
+          attributes: ['filename'],
+        },
       });
 
       return res.status(200).json(products);
@@ -19,7 +25,14 @@ class ProductController {
     try {
       const { id } = req.params;
 
-      const product = await Product.findByPk(id);
+      const product = await Product.findByPk(id, {
+        attributes: ['id', 'name', 'description', 'price', 'stock_quantity'],
+        order: [['id', 'DESC'], [Image, 'id', 'DESC']],
+        include: {
+          model: Image,
+          attributes: ['filename'],
+        },
+      });
 
       return res.status(200).json(product);
     } catch (err) {
