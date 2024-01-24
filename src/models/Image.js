@@ -11,6 +11,12 @@ export default class Images extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `http://localhost:3001/images/${this.getDataValue('filename')}`;
+        },
+      },
     }, {
       sequelize,
     });
