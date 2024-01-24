@@ -29,5 +29,6 @@ module.exports = {
     'no-param-reassign': 0,
     camelcase: 0,
     'max-len': 0,
+    'no-else-return': 0,
   },
 };
