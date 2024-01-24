@@ -9,7 +9,7 @@ class UserController {
         order: [['id', 'DESC'], [Image, 'id', 'DESC']],
         include: {
           model: Image,
-          attributes: ['filename'],
+          attributes: ['filename', 'url'],
         },
       });
 
