@@ -9,7 +9,7 @@ export default class Product extends Model {
         validate: {
           len: {
             args: [3, 24],
-            msg: 'Username must have between 3 or 24 characters',
+            msg: 'Product name must have between 3 or 24 characters',
           },
         },
       },
