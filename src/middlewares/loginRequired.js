@@ -16,8 +16,7 @@ export default function loginRequired(req, res, next) {
       return res.status(500).json({ auth: false, message: 'Invalid token.' });
     }
     const { id } = decoded;
-    return { id };
+    req.userId = id;
+    return next();
   });
-
-  return next();
 }
