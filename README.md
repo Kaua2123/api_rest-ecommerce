@@ -10,7 +10,6 @@ A API conta com diversas rotas e funcionalidades que simulam uma aplicação de 
 ### Inicializando o Banco de Dados MySQL
 
 - Abra o MySQL Workbench e crie um schema chamado "ecommerce" 
-- Cole o conteúdo no MySQL Workbench e execute para criar o esquema do banco de dados.
 
 ### Inicializando a API REST
 
