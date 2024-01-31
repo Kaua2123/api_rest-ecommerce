@@ -5,7 +5,7 @@ class ProductController {
   async index(req, res) {
     try {
       const products = await Product.findAll({
-        attributes: ['id', 'user_id', 'name', 'description', 'price', 'stock_quantity'],
+        attributes: ['id', 'user_id', 'name', 'description', 'price', 'stock_quantity', 'product_quantity'],
         order: [['id', 'DESC'], [Image, 'id', 'DESC']],
         include: {
           model: Image,
@@ -26,7 +26,7 @@ class ProductController {
       const { id } = req.params;
 
       const product = await Product.findByPk(id, {
-        attributes: ['id', 'name', 'description', 'price', 'stock_quantity'],
+        attributes: ['id', 'name', 'description', 'price', 'stock_quantity', 'product_quantity'],
         order: [['id', 'DESC'], [Image, 'id', 'DESC']],
         include: {
           model: Image,

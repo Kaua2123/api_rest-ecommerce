@@ -9,7 +9,8 @@ export default function loginRequired(req, res, next) {
   const token = separatedString[1];
 
   if (!token) {
-    return res.status(401).json('Você precisa estar logado.');
+    console.error('Token não fornecido');
+    return res.status(401).json('Você deve estar logado.');
   }
 
   jwt.verify(token, process.env.TOKEN_KEY, (err, decoded) => {

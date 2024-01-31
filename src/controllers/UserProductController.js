@@ -1,4 +1,5 @@
 import Product from '../models/Product';
+import Image from '../models/Image';
 
 class UserProductController {
   async index(req, res) {
@@ -6,6 +7,12 @@ class UserProductController {
       const id = req.userId; // pegando do token o id do usuário
 
       const userProducts = await Product.findAll({
+        attributes: ['id', 'name', 'description', 'price', 'stock_quantity'],
+        order: [['id', 'DESC'], [Image, 'id', 'DESC']],
+        include: {
+          model: Image,
+          attributes: ['filename', 'url'],
+        },
         where: {
           user_id: id,
         },

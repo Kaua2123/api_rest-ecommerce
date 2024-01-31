@@ -41,6 +41,10 @@ export default class Product extends Model {
           },
         },
       },
+      product_quantity: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
+      },
     }, {
       sequelize,
     });
