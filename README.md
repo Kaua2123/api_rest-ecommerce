@@ -2,6 +2,8 @@
 
 ## Descrição
 
+### obs: Este projeto não foi finalizado.
+
 API REST feita com o propósito de a consumir no front-end e treinar meus conhecimentos em nodeJS, express, conexão com banco de dados, etc.
 
 A API conta com diversas rotas e funcionalidades que simulam uma aplicação de loja virtual
